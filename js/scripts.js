@@ -1,4 +1,5 @@
 let pokemonRepository = (function () {
+  
   let pokemonList = [
     { name: 'pikachu', height: 4, types: ['field','fairy'] },
     { name: 'bulbasaur', height: 7, types: ['monster','grass'] },
@@ -6,13 +7,16 @@ let pokemonRepository = (function () {
     { name: 'seel', height: 11, types: ['water','field'] },
     { name: 'squirtle', height: 5, types: ['monster','water'] }
   ];
+  
   function add(pokemon) {
     pokemonList.push(pokemon);
   }
+  
   function getAll() {
     return pokemonList;
   }
-  function addListItem(pokemon){
+  
+  function addListItem(pokemon) {
     let pokemonList = document.querySelector(".pokemon-list");
     let listItem = document.createElement("li");
     let button = document.createElement('button');
@@ -22,14 +26,17 @@ let pokemonRepository = (function () {
     pokemonList.appendChild(listItem);
     addEventListener(button,pokemon); 
   }
-  function showDetails(pokemon){
+  
+  function showDetails(pokemon) {
     console.log(pokemon);
   }
-  function addEventListener(button, pokemon){
-    button.addEventListener('click', function(){
+  
+  function addEventListener(button, pokemon) {
+    button.addEventListener('click', function() {
       showDetails(pokemon);
     });
   }
+  
   return {
     add: add,
     getAll: getAll,
@@ -40,6 +47,7 @@ let pokemonRepository = (function () {
 })();
 
 let pokemonGetList = pokemonRepository.getAll();
-  pokemonGetList.forEach(function (pokemon){
+
+pokemonGetList.forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
 });
