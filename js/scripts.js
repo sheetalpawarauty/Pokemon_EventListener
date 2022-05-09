@@ -20,15 +20,24 @@ let pokemonRepository = (function () {
     button.classList.add("button-class");
     listItem.appendChild(button);
     pokemonList.appendChild(listItem);
+    pokemonRepository.eventListener(button, pokemon);
+  }
+  function eventListener(button, pokemon){
+    button.addEventListener('click',showDetails(pokemon));
+  }
+  showDetails(pokemon){
+    console.log(pokemon);
   }
   return {
     add: add,
     getAll: getAll,
-    addListItem: addListItem
+    addListItem: addListItem,
+    showDetails: showDetails,
+    eventListener: eventListener
   };
 })();
 
 let pokemonGetList = pokemonRepository.getAll();
-pokemonGetList.forEach(function (pokemon){
-  pokemonRepository.addListItem(pokemon);
+  pokemonGetList.forEach(function (pokemon){
+    pokemonRepository.addListItem(pokemon);
 });
